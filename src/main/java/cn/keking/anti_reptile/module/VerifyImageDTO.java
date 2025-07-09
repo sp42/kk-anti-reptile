@@ -2,12 +2,8 @@ package cn.keking.anti_reptile.module;
 
 import java.io.Serializable;
 
-/**
- * @author chenjh
- * @since 2019/7/16 11:55
- */
-public class VerifyImageDTO implements Serializable {
 
+public class VerifyImageDTO implements Serializable {
     private static final long serialVersionUID = 6741944800448697513L;
 
     private String verifyId;

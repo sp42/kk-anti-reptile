@@ -1,6 +1,6 @@
 package cn.keking.anti_reptile.config;
 
-import cn.keking.anti_reptile.interceptor.AntiReptileInterceptor;
+import cn.keking.anti_reptile.AntiReptileInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;

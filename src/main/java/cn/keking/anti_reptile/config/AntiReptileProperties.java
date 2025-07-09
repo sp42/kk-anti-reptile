@@ -2,7 +2,6 @@ package cn.keking.anti_reptile.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
-
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -73,6 +72,7 @@ public class AntiReptileProperties {
     public boolean isGlobalFilterMode() {
         return globalFilterMode;
     }
+
     public void setGlobalFilterMode(boolean globalFilterMode) {
         this.globalFilterMode = globalFilterMode;
     }
@@ -161,7 +161,7 @@ public class AntiReptileProperties {
         private boolean allowedMobile = true;
 
         /**
-         *  是否允许移PC设备访问: 默认是
+         * 是否允许移PC设备访问: 默认是
          */
         private boolean allowedPc = true;
 

@@ -13,15 +13,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-/**
- * @author chenjh
- * @since 2020/2/10 09:20
- */
-public class ValidateFormServlet extends HttpServlet {
 
+public class ValidateFormServlet extends HttpServlet {
     private ValidateFormService validateFormService;
 
-    private AtomicBoolean initialized = new AtomicBoolean(false);
+    private final AtomicBoolean initialized = new AtomicBoolean(false);
 
     private synchronized void init(ServletContext servletContext) {
         ApplicationContext ctx = WebApplicationContextUtils.getWebApplicationContext(servletContext);
@@ -35,6 +31,7 @@ public class ValidateFormServlet extends HttpServlet {
             init(request.getServletContext());
             initialized.set(true);
         }
+
         String result = validateFormService.validate(request);
         CrosUtil.setCrosHeader(response);
         response.setContentType("application/json;charset=utf-8");

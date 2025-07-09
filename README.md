@@ -1,5 +1,7 @@
 ## 概述
 
+一个依赖搞定 Spring Boot 反爬虫，防止接口盗刷！https://cloud.tencent.com/developer/article/1667923
+
 kk-anti-reptile 是适用于`基于 spring-boot 开发的分布式系统`的开源反爬虫接口防刷组件。
 
 ## 开源地址

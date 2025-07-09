@@ -1,8 +1,8 @@
 package cn.keking.anti_reptile.config;
 
 import cn.keking.anti_reptile.ValidateFormService;
-import cn.keking.anti_reptile.constant.AntiReptileConsts;
-import cn.keking.anti_reptile.interceptor.AntiReptileInterceptor;
+import cn.keking.anti_reptile.AntiReptileConsts;
+import cn.keking.anti_reptile.AntiReptileInterceptor;
 import cn.keking.anti_reptile.rule.AntiReptileRule;
 import cn.keking.anti_reptile.rule.IpRule;
 import cn.keking.anti_reptile.rule.RuleActuator;
@@ -23,6 +23,7 @@ import java.util.stream.Collectors;
 
 /**
  * RedissonAutoConfiguration 的 AutoConfigureOrder 为默认值(0)，此处在它后面加载
+ *
  * @author kl @kailing.pub
  * @since 2019/7/8
  */
@@ -43,13 +44,13 @@ public class AntiReptileAutoConfig {
     }
 
     @Bean
-    @ConditionalOnProperty(prefix = "anti.reptile.manager.ip-rule",value = "enabled", havingValue = "true", matchIfMissing = true)
-    public IpRule ipRule(){
+    @ConditionalOnProperty(prefix = "anti.reptile.manager.ip-rule", value = "enabled", havingValue = "true", matchIfMissing = true)
+    public IpRule ipRule() {
         return new IpRule();
     }
 
     @Bean
-    @ConditionalOnProperty(prefix = "anti.reptile.manager.ua-rule",value = "enabled", havingValue = "true", matchIfMissing = true)
+    @ConditionalOnProperty(prefix = "anti.reptile.manager.ua-rule", value = "enabled", havingValue = "true", matchIfMissing = true)
     public UaRule uaRule() {
         return new UaRule();
     }
@@ -60,14 +61,14 @@ public class AntiReptileAutoConfig {
     }
 
     @Bean
-    public RuleActuator ruleActuator(final List<AntiReptileRule> rules){
+    public RuleActuator ruleActuator(final List<AntiReptileRule> rules) {
         final List<AntiReptileRule> antiReptileRules = rules.stream()
                 .sorted(Comparator.comparingInt(AntiReptileRule::getOrder)).collect(Collectors.toList());
         return new RuleActuator(antiReptileRules);
     }
 
     @Bean
-    public ValidateFormService validateFormService(){
+    public ValidateFormService validateFormService() {
         return new ValidateFormService();
     }
 

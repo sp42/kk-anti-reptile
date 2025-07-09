@@ -4,7 +4,6 @@ import cn.keking.anti_reptile.module.VerifyImageDTO;
 import cn.keking.anti_reptile.module.VerifyImageVO;
 import cn.keking.anti_reptile.rule.RuleActuator;
 import cn.keking.anti_reptile.util.VerifyImageUtil;
-
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -42,14 +41,14 @@ public class ValidateFormService {
             e.printStackTrace();
         }
         Map<String, String> params = new HashMap<String, String>();
-        for(Object object : items){
+        for (Object object : items) {
             FileItem fileItem = (FileItem) object;
             if (fileItem.isFormField()) {
                 params.put(fileItem.getFieldName(), fileItem.getString("UTF-8"));
             }
         }
         String verifyId = params.get("verifyId");
-        String result =  params.get("result");
+        String result = params.get("result");
         String realRequestUri = params.get("realRequestUri");
         String actualResult = verifyImageUtil.getVerifyCodeFromRedis(verifyId);
         if (actualResult != null && request != null && actualResult.equals(result.toLowerCase())) {

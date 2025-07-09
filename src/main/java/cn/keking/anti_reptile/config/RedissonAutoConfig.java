@@ -15,6 +15,7 @@ import org.springframework.util.ClassUtils;
 
 /**
  * 没有redisson starter时才加载
+ *
  * @author chenjh
  * @since 2019/7/17 8:21
  */
@@ -25,14 +26,14 @@ public class RedissonAutoConfig {
 
     private String address;
     private int connectionMinimumIdleSize = 10;
-    private int idleConnectionTimeout=10000;
-    private int connectTimeout=10000;
-    private int timeout=3000;
-    private int retryAttempts=3;
-    private int retryInterval=1500;
+    private int idleConnectionTimeout = 10000;
+    private int connectTimeout = 10000;
+    private int timeout = 3000;
+    private int retryAttempts = 3;
+    private int retryInterval = 1500;
     private String password = null;
-    private int subscriptionsPerConnection=5;
-    private String clientName=null;
+    private int subscriptionsPerConnection = 5;
+    private String clientName = null;
     private int subscriptionConnectionMinimumIdleSize = 1;
     private int subscriptionConnectionPoolSize = 50;
     private int connectionPoolSize = 64;
@@ -40,7 +41,7 @@ public class RedissonAutoConfig {
     private boolean dnsMonitoring = false;
     private int dnsMonitoringInterval = 5000;
 
-    private String codec="org.redisson.codec.JsonJacksonCodec";
+    private String codec = "org.redisson.codec.JsonJacksonCodec";
 
     @Bean(destroyMethod = "shutdown")
     @ConditionalOnMissingBean
@@ -61,7 +62,7 @@ public class RedissonAutoConfig {
                 .setConnectTimeout(connectTimeout)
                 .setIdleConnectionTimeout(idleConnectionTimeout)
                 .setPassword(password);
-        Codec codec=(Codec) ClassUtils.forName(getCodec(), ClassUtils.getDefaultClassLoader()).newInstance();
+        Codec codec = (Codec) ClassUtils.forName(getCodec(), ClassUtils.getDefaultClassLoader()).newInstance();
         config.setCodec(codec);
         config.setEventLoopGroup(new NioEventLoopGroup());
         return Redisson.create(config);

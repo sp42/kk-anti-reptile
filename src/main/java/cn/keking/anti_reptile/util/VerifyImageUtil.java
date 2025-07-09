@@ -6,12 +6,8 @@ import org.redisson.api.RBucket;
 import org.redisson.api.RedissonClient;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.awt.Color;
-
 import java.io.ByteArrayOutputStream;
-
 import java.util.Base64;
-import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
